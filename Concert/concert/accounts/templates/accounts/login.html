@@ -1,0 +1,28 @@
+{% extends "ticketSales/layout.html" %}
+
+{% block titlepage %} 
+    ورود کاربران
+{% endblock%}
+
+{% block mainContent %}
+
+<div class="col-md-3"></div>
+
+<div class="col-md-6">
+
+<form action="" method="POST" class="form">
+    {% csrf_token %}
+    <h3>اطلاعات کاربری خود را وارد نمایید</h2>
+    <label class="lable-control">نام کاربری:</label>
+    <input type="text" id="username" name="username" placeholder="نام کاربری خود را وارد نمایید" class="form-control">
+    <label class="lable-control">رمز عبور :</label>
+    <input type="password" id="password" name="password" placeholder="رمز عبور  خود را وارد نمایید" class="form-control">
+
+    <input type="submit" value="ورود" class="btn btn-success">
+</form> 
+
+</div>
+
+<div class="col-md-3"></div>
+
+{% endblock%}
