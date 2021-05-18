@@ -32,3 +32,6 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     return HttpResponseRedirect(reverse(ticketSales.views.concertListView))
+
+def profileView(request):
+    pass
