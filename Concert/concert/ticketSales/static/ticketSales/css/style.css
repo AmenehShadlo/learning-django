@@ -3,6 +3,8 @@ body{
     font-family: 'IranSanse';
 }
 
+
+
 .box{
     background-color:mediumturquoise ;
     padding-top: 40px;
@@ -68,4 +70,23 @@ body{
 
 .form{
     margin-top: 20px;
+}
+
+.mainborder{
+    border:1px solid gray;
+    margin: 20px;
+}
+
+.border{
+    background-color: whitesmoke;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    width: 100px !important;
+}
+
+p{
+    padding: 10px;
 }

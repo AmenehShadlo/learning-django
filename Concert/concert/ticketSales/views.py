@@ -6,17 +6,24 @@ from ticketSales.models import timeModel
 import accounts
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from ticketSales.forms import SearchForm
 
 # Create your views here.
 
 def concertListView(request):
 
-    concerts=concertModel.objects.all()
-    
+    searchForm=SearchForm(request.GET)
+    if searchForm.is_valid():
+        SearchText=searchForm.cleaned_data["SearchText"]
+        concerts=concertModel.objects.filter(Name__contains=SearchText)
+    else:
+        concerts=concertModel.objects.all()
+
     context={
 
         "concertlist":concerts,
-        "concertcount":concerts.count()
+        "concertcount":concerts.count(),
+        "searchForm":searchForm
     }
 
     return render(request,"ticketSales/concertlist.html",context)

@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
+
 def loginView(request):
     #Post
     if request.method=='POST':
@@ -33,5 +34,13 @@ def logoutView(request):
     logout(request)
     return HttpResponseRedirect(reverse(ticketSales.views.concertListView))
 
+@login_required
 def profileView(request):
-    pass
+    profile=request.user.profile
+
+    context={
+        "profile":profile
+    }
+
+    return render(request,"accounts/profile.html",context)
+
