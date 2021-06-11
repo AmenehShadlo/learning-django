@@ -5,6 +5,7 @@ import ticketSales
 from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from accounts.forms import ProfileForm
 
 
 def loginView(request):
@@ -43,4 +44,15 @@ def profileView(request):
     }
 
     return render(request,"accounts/profile.html",context)
+
+@login_required
+def profileEditView(request):
+    profileForm=ProfileForm(instance=request.user.profile)
+
+    context={
+        "formData":profileForm
+    }
+
+    return render(request,"accounts/profileEdit.html",context)
+
 

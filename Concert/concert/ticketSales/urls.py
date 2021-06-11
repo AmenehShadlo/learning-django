@@ -7,4 +7,5 @@ urlpatterns = [
     path('location/list', views.locationListView),
     path('concert/<int:concert_id>', views.concertDetailsView),
     path('time/list', views.timeView),
+    path('concertEdit/<int:concert_id>', views.consertEditView),
 ]

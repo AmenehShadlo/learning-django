@@ -3,10 +3,11 @@ from django.http import HttpResponse,HttpResponseRedirect
 from ticketSales.models import concertModel
 from ticketSales.models import locationModel
 from ticketSales.models import timeModel
+import ticketSales
 import accounts
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from ticketSales.forms import SearchForm
+from ticketSales.forms import SearchForm,ConcertForm
 
 # Create your views here.
 
@@ -67,3 +68,22 @@ def timeView(request):
 
     # else:
     #     return HttpResponseRedirect(reverse(accounts.views.loginView))
+
+def consertEditView(request,concert_id):
+    
+    concert=concertModel.objects.get(pk=concert_id)
+
+    if request.method=="POST":
+        concertForm=ConcertForm(request.POST, instance=concert)
+        if concertForm.is_valid:
+            concertForm.save()
+            return HttpResponseRedirect(reverse(ticketSales.views.concertListView))
+    else:
+        concertForm=ConcertForm(instance=concert)
+
+    context={
+
+        "concertForm":concertForm,
+    }
+
+    return render(request,"ticketSales/concertEdit.html",context)
