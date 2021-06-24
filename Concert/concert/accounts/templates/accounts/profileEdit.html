@@ -5,5 +5,11 @@
 {% endblock%}
 
 {% block mainContent %}
-    {{ formData }}
+  
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ formData }}
+
+        <button type="submit" class="btn btn-success">ذخیره</button>
+    </form>
 {% endblock%}

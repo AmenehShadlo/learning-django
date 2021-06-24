@@ -5,11 +5,27 @@
 {% endblock%}
 
 {% block mainContent %}
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ concertForm }}
-
-        <button type="submit" class="btn btn-success">ذخیره</button>
+        <!-- {{ concertForm }} -->
+        <div class="mainborder">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mylable">Name: {{ concertForm.Name }}</p>
+                    <p class="mylable">SingerName: {{ concertForm.SingerName }}</p>
+                    <p class="mylable">lenght: {{ concertForm.lenght }}</p>
+                </div>
+                <div  class="col-md-6">
+                   <div class="imageBox">
+                       <img src="{{ PosterImage.url }}">
+                   </div>
+                    {{ concertForm.Poster }}
+                </div>
+            </div>
+        </div>
+        <div class="bottonborder">
+            <button type="submit" class="btn btn-success">ذخیره</button>
+        </div>
     </form>
 {% endblock%}
                

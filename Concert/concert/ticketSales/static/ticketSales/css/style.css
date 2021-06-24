@@ -73,7 +73,7 @@ body{
 }
 
 .mainborder{
-    border:1px solid gray;
+    border:1px solid lightgray;
     margin: 20px;
 }
 
@@ -88,5 +88,17 @@ body{
 }
 
 p{
+    padding: 10px;
+}
+
+.mylable{
+    color: blue;
+    width: 100px;
+}
+
+.bottonborder{
+    background-color: lightgray;
+    direction: rtl;
+    margin: 20px;
     padding: 10px;
 }

@@ -74,7 +74,7 @@ def consertEditView(request,concert_id):
     concert=concertModel.objects.get(pk=concert_id)
 
     if request.method=="POST":
-        concertForm=ConcertForm(request.POST, instance=concert)
+        concertForm=ConcertForm(request.POST,request.FILES, instance=concert)
         if concertForm.is_valid:
             concertForm.save()
             return HttpResponseRedirect(reverse(ticketSales.views.concertListView))
@@ -84,6 +84,7 @@ def consertEditView(request,concert_id):
     context={
 
         "concertForm":concertForm,
+        "PosterImage":concert.Poster
     }
 
     return render(request,"ticketSales/concertEdit.html",context)
