@@ -5,7 +5,9 @@ import ticketSales
 from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from accounts.forms import ProfileForm
+from accounts.forms import ProfileRegisterForm
+from django.contrib.auth.models import User
+from accounts.models import ProfileModel
 
 
 def loginView(request):
@@ -45,14 +47,39 @@ def profileView(request):
 
     return render(request,"accounts/profile.html",context)
 
-@login_required
-def profileEditView(request):
-    profileForm=ProfileForm(instance=request.user.profile)
 
+
+def profileRegisterView(request):
+
+    if request.method=="POST":
+        profileRegisterForm=ProfileRegisterForm(request.POST,request.FILES)
+        if profileRegisterForm.is_valid():
+
+            user = User.objects.create_user(username=profileRegisterForm.cleaned_data["username"],
+                                email=profileRegisterForm.cleaned_data['email'],
+                                password=profileRegisterForm.cleaned_data['password'],
+                                first_name=profileRegisterForm.cleaned_data['first_name'],
+                                last_name=profileRegisterForm.cleaned_data['last_name'])
+
+            user.save()
+
+            profileModel=ProfileModel(user=user,
+                                       ProfileImage=profileRegisterForm.cleaned_data['ProfileImage'],
+                                        Gender=profileRegisterForm.cleaned_data['Gender'],
+                                        Credit=profileRegisterForm.cleaned_data['Credit'])
+
+            profileModel.save()
+
+            return HttpResponseRedirect(reverse(ticketSales.views.concertListView))
+    else:
+        profileRegisterForm=ProfileRegisterForm()
+
+  
     context={
-        "formData":profileForm
+        "formData":profileRegisterForm
     }
 
-    return render(request,"accounts/profileEdit.html",context)
+
+    return render(request,"accounts/profileRegister.html",context)
 
 

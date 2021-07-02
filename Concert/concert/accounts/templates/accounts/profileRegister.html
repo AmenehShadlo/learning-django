@@ -1,0 +1,34 @@
+{% extends "ticketSales/layout.html" %}
+
+{% block titlepage %} 
+    فرم ثبت نام 
+{% endblock%}
+
+{% block mainContent %}
+  
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      
+        <div class="mainborder">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mylable">Name: {{ formData.first_name }}</p>
+                    <p class="mylable">Family: {{ formData.last_name }}</p>
+                    <p class="mylable">Gender: {{ formData.Gender }}</p>
+                    <p class="mylable">Credit: {{ formData.Credit }}</p>
+                  
+                  
+                </div>
+                <div  class="col-md-6">
+                    <p class="mylable">Email: {{ formData.email }}</p>
+                    <p class="mylable">UserName: {{ formData.username }}</p>
+                    <p class="mylable">Password: {{ formData.password }}</p>
+                    {{ formData.ProfileImage }}
+                </div>
+            </div>
+        </div>
+        <div class="bottonborder">
+            <button type="submit" class="btn btn-success">ثبت نام</button>
+        </div>
+    </form>
+{% endblock%}
