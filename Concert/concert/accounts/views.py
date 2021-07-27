@@ -2,10 +2,11 @@ from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 import ticketSales
+import accounts
 from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from accounts.forms import ProfileRegisterForm
+from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel
 
@@ -83,3 +84,25 @@ def profileRegisterView(request):
     return render(request,"accounts/profileRegister.html",context)
 
 
+def ProfileEditView(request):
+    
+    if request.method=="POST":
+        profileEditForm=ProfileEditForm(request.POST,request.FILES, instance=request.user.profile)
+        userEditForm=UserEditForm(request.POST,instance=request.user)
+        if profileEditForm.is_valid and userEditForm.is_valid:
+            profileEditForm.save()
+            userEditForm.save()
+            return HttpResponseRedirect(reverse(accounts.views.profileView))
+    else:
+        profileEditForm=ProfileEditForm(instance=request.user.profile)
+        userEditForm=UserEditForm(instance=request.user)
+
+    context={
+
+        "profileEditForm":profileEditForm,
+        "userEditForm":userEditForm,
+        "ProfileImage":request.user.profile.ProfileImage,
+        
+    }
+
+    return render(request,"accounts/profileEdit.html",context)

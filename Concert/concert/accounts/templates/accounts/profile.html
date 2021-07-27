@@ -7,7 +7,7 @@
 {% block mainContent %}
    <div class="row" style="margin-top: 20px;">
       
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div >
                     <p class="border"> <span class="title">نام و نام خانوادگی: </span> {{ profile.user.get_full_name }} </p>
                     <p class="border"> <span class="title">جنسیت: </span> {{ profile.get_Gender_display }}</p>
@@ -17,8 +17,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4" dir="ltr">
-                    <img src="{{ profile.ProfileImage.url }}">
+            <div class="col-md-3" dir="ltr">
+                    <img src="{{ profile.ProfileImage.url }}" style="width:100%;height:auto">
             </div>
       
     </div>

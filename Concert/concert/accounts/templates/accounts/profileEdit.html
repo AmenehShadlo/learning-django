@@ -1,0 +1,36 @@
+{% extends "ticketSales/layout.html" %}
+
+{% block titlepage %} 
+    ویرایش پروفایل
+{% endblock%}
+
+{% block mainContent %}
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      
+        <div class="mainborder">
+            <div class="row">
+                <div class="col-md-10">
+                    <div>
+                        <p class="border"> <span class="title">نام: </span>{{userEditForm.first_name}}  </p>
+                        <p class="border"> <span class="title"> نام خانوادگی: </span> {{userEditForm.last_name}} </p>
+                        <p class="border"> <span class="title">ایمیل: </span> {{userEditForm.email}} </p>
+                        <p class="border"> <span class="title">جنسیت: </span> {{ profileEditForm.Gender }}</p>
+                        <p class="border"><span class="title">مقدار اعتبار: </span> {{ profileEditForm.Credit }}</p>
+                    
+                    </div>
+                </div>
+                <div  class="col-md-2">
+                    <div class="imageBox">
+                        <img src="{{ ProfileImage.url }}">
+                    </div>
+                    {{ profileEditForm.ProfileImage }}
+                </div>
+           </div>
+            <div class="bottonborder">
+                <button type="submit" class="btn btn-success">ذخیره</button>
+            </div>
+        </div>
+    </form>
+{% endblock%}
