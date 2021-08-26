@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %} {{ title }} |  پنل مدیریت فروش بلیط کنسرت {% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+       
+        <img src="{% static 'admin/images/Logo.png' %}" style="width: 50px; height: auto;">
+        فروش بلیط
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

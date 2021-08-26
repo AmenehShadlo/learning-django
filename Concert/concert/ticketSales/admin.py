@@ -7,7 +7,10 @@ from ticketSales.models import ticketModel
 
 # Register your models here.
 
-admin.site.register(concertModel)
+class ConcertAdmin(admin.ModelAdmin):
+    list_display=("Name","SingerName","lenght","Poster")
+
+admin.site.register(concertModel,ConcertAdmin)
 admin.site.register(locationModel)
 admin.site.register(timeModel)
 admin.site.register(ticketModel)
