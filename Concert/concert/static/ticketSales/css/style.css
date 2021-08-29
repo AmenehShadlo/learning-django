@@ -1,0 +1,104 @@
+
+body{
+    font-family: 'IranSanse' !important;
+}
+
+
+
+.box{
+    background-color:mediumturquoise ;
+    padding-top: 40px;
+    
+    text-align: center;
+}
+
+.imageBox{
+    margin: 5px;
+    background-color: whitesmoke;
+    text-align: center;
+    font-size: 15px;
+    border:1px dashed green;
+    padding:10px
+}
+
+.imageBox img{
+    width: 100%;
+    height: auto;
+}
+
+.btnul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.btnul li{
+    float: left;
+    margin-left: 10px;
+}
+
+.location{
+    margin: 5px;
+    background-color: whitesmoke;
+    font-size: 15px;
+    border:1px dashed green;
+    padding:10px;
+    text-align: right;
+}
+
+.locationHeader{
+    background-color: whitesmoke;
+    margin: 5px;
+    text-align: right;
+    font-size: 15px;
+    border:2px dashed green;
+    padding:10px;
+    color:green
+}
+
+.timeBox{
+    margin: 5px;
+    background-color: whitesmoke;
+    font-size: 15px;
+    border:1px dashed green;
+    padding:10px;
+    text-align: center;
+}
+
+.default{
+    border:1px solid gray
+}
+
+.form{
+    margin-top: 20px;
+}
+
+.mainborder{
+    border:1px solid lightgray;
+    margin: 20px;
+}
+
+.border{
+    background-color: whitesmoke;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    width: 100px !important;
+}
+
+p{
+    padding: 10px;
+}
+
+.mylable{
+    color: blue;
+    width: 100px;
+}
+
+.bottonborder{
+    background-color: lightgray;
+    direction: rtl;
+    margin: 20px;
+    padding: 10px;
+}
