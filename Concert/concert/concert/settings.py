@@ -164,3 +164,5 @@ LOGIN_URL='/accounts/login/'
 LOGIN_REDIRECT_URL='/ticketSales/concert/list'
 
 STATICFILES_DIRS= [os.path.join(BASE_DIR,"static")]
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
