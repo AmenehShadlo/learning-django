@@ -18,7 +18,24 @@
                 url('{% static "ticketSales/fonts/woff2/IRANSansWeb.woff2" %}') format('woff2');
             }
         </style>>
+        <script>
+			$(function() {
+				// Click-handler for the refresh-link
+				$('.captcha-refresh').click(function(){
+					var $form = $(this).parents('form');
+					var url = location.protocol + "//" + window.location.hostname + ":"
+							+ location.port + "/captcha/refresh/";
 
+					// Make the AJAX-call
+					$.getJSON(url, {}, function(json) {
+						$form.find('input[name="captcha_0"]').val(json.key);
+						$form.find('img.captcha').attr('src', json.image_url);
+					});
+
+					return false;
+				});
+			});
+		</script>
 
     </head>
     <body>

@@ -2,6 +2,7 @@ from django import forms
 from django.forms import fields
 from accounts.models import ProfileModel
 from django.contrib.auth.forms import UserChangeForm
+from captcha.fields import CaptchaField
 
 class ProfileRegisterForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100)
@@ -9,6 +10,8 @@ class ProfileRegisterForm(forms.ModelForm):
     username = forms.CharField(max_length=100)
     password = forms.CharField(widget=forms.PasswordInput)
     email = forms.CharField(widget=forms.EmailInput)
+    captcha = CaptchaField()
+
 
     class Meta:
         model=ProfileModel

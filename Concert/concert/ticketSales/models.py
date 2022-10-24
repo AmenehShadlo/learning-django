@@ -19,7 +19,7 @@ class concertModel (models.Model):
     def __str__(self):
         return self.SingerName
 
-    
+
 class locationModel(models.Model):
     class Meta:
         verbose_name="محل برگزاری"
