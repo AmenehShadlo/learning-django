@@ -1,4 +1,5 @@
 {% extends "ticketSales/layout.html" %}
+{% load static %}
 
 {% block titlepage %} 
     فرم ثبت نام 
@@ -23,6 +24,7 @@
                     <p class="mylable">Email: {{ formData.email }}</p>
                     <p class="mylable">UserName: {{ formData.username }}</p>
                     <p class="mylable">Password: {{ formData.password }}</p>
+                    <p><a href="" class="captcha-refresh"><img src="{% static 'ticketSales/images/refresh.jpg' %}" alt="Refresh" width="20" height="auto"></a>{{formData.captcha}}</p>
                     {{ formData.ProfileImage }}
                 </div>
             </div>
